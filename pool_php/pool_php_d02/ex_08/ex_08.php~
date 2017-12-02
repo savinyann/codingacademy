@@ -1,0 +1,16 @@
+<?php
+
+function my_order_class_name(...$arg)
+{
+    $i = 0;
+    $result = array();
+    foreach($arg as $value)
+        {
+            $result[$i] = gettype($value);
+            $i++;
+        }
+    return($result);
+}
+
+print_r(my_older_class_name($argv));
+?>

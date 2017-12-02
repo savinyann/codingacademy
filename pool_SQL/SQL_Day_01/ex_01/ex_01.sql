@@ -1,0 +1,2 @@
+USE coding;
+SHOW TABLES;

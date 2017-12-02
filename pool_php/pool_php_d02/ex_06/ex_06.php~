@@ -1,0 +1,40 @@
+<?php
+function my_create_continent($continent_name, $worldmap)
+{
+    $worldmap[$continent_name];
+}
+
+
+
+
+function my_create_country($country_name,$continent_name, $worldmap)
+{    
+}
+
+
+
+
+function my_create_city($city_name, $postalcode, $country_name, $continent_name, $worldmap)
+{    
+}
+
+
+
+function get_country_of_continent($continent_name, $worldmap)
+{
+}
+
+
+
+function get_cities_of_country($countryName, $continentName, $worldMap);
+{
+}
+
+
+function get_city_postal_code($city_name,$country_name,$continent_name,$worldmap)
+{
+}
+
+
+
+?>

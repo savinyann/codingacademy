@@ -1,0 +1,2 @@
+SQLSTATE[42000] [1049] Unknown database 'gecko2'
+SQLSTATE[HY000] [2005] Unknown MySQL server host 'bla::50' (2)

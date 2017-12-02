@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercise 06 - Jquery</title>
+    </head>
+    <body>
+        <header>
+        </header>
+            <section>
+                <p>Let’s upgrade our search engine a little more. It should now be possible to search for “tags”, but also for two types of elements at the same times (email and todo for example).</p>
+                <p>Moreover, you will add the possibilities to search for multiples tags at the same time. It should also be possible to precise if the tags must all be included or not.</p>
+                <p>Example:</p>
+                <p>I have a “todo” with the following tags: “work”, “tired”, “dailyLife”.</p>
+                <p>An “email” with the following tags: “work”, “boss”.</p>
+                <p>And a “note” with the followings tags: “boss”, “money”.</p>
+                <p>If my search for tags say “work”, the “todo” and “email” must be displayed.</p>
+                <p>If I now search for “work” and “boss” (and both must be included), only the “email” will be displayed at the end.</p>
+                <p>And finally, if I search for “dailyLife” or “money” (one or the other), the “todo” and “note” must be displayed.</p>
+                <p>We do not ask you to handle cases like this: (“work” AND “boss”) || ( “boss” AND “money”)</p>
+                <p>And all the more complicate cases you may imagine, however if you do handle those cases, you may be awarded bonus points.</p>
+
+            </section>
+            <form>
+                <p>Search: <input id="search" type="text" name="search"></p>
+                <p>Note: <input type="text" name="note"> Tag: <input type="text" name="tag_note"></p>
+                <p>Email: <input type="text" name="email"> Tag: <input type="text" name="tag_email"></p>
+                <p>Todo: <input type="text" name="todo"> Tag: <input type="text" name="tag_todo"></p>
+            </form>
+                <button>Submit</button>
+        <footer>
+            <div>
+            </div>
+        </footer>
+        <nav>
+            <a href="../ex_05/index.html" class="btn next">
+            &larr;Prev Exercise</a>
+            <a href="../ex_06/index.html" class="btn next">
+            Next Exercise &rarr;</a>
+        </nav>
+        <script src="../Jquery.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html> 
