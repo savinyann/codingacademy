@@ -1,0 +1,36 @@
+echo "Indiquez le nom du dossier à créer."
+read Repository_Name
+blih -u yann.savin@coding-academy.fr repository create $Repository_Name
+if [ "$?" = "0" ]
+then
+    echo "Le dossier a été créé."
+else
+    echo "Une erreur s'est produite."
+    exit
+fi
+echo "Veuillez inscrire votre mot de passe pour donner les droits d'accès au dossier à gecko."
+blih -u yann.savin@coding-academy.fr repository setacl $Repository_Name gecko r
+if [ "$?" = "0" ]
+then
+    echo "Le droit de lecture du dossier a été donné à gecko."
+else
+    echo "Une erreur s'est produite."
+    exit
+fi
+echo "Veuillez inscrire votre mot de passe pour donner les droits d'accès au dossier à ramassage-tek."
+blih -u yann.savin@coding-academy.fr repository setacl $Repository_Name ramassage-tek r
+if [ "$?" = "0" ]
+then
+    echo "Le droit de lecture du dossier a été donné à ramassage-tek."
+else
+    echo "Une erreur s'est produite."
+    exit
+fi
+git clone git@git.epitech.eu:/yann.savin@coding-academy.fr/$Repository_Name
+if [ "$?" = "0" ]
+then
+    echo "Le dossier a été clonée sur l'ordinateur."
+else
+    echo "Une erreur s'est produite."
+    exit
+fi

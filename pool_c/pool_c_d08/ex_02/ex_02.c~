@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include "struct.h"
+#include "material.h"
+void	my_init(t_my_struct *);
+
+void	my_init(t_my_struct *my_struct)
+{
+  my_struct->id = 0;
+  my_struct->str = NULL;
+}
+
+int	main()
+{
+  t_my_struct	*my_struct;
+  my_init(my_struct);
+  my_putnbr(my_struct->id);
+  my_putchar(10);
+  my_putstr(my_struct->str);
+  my_putchar(10);
+}

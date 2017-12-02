@@ -1,0 +1,24 @@
+Once again, it's your time to shine !
+
+- Open your previous program in Emacs again
+
+- Add the my_putchar() function to your source code.
+
+- Don't try to understand how exactly it works yet.
+
+- Get familiar with its usage :
+  - It takes a char as parameter (a number between -128 and 127, as you saw in the C in 29 minutes lecture)
+  - Try to write various symbols at random, by choosing in the ASCII table (man ascii)
+
+- Try whatever you think of. The computer is here to allow you to explore whatever goes through your mind, and will be the first to tell you if it makes any sense or not.
+  Before asking an assistant if what you did is OK or not, make the computer do it, you'll have your answer.
+
+- Once you master the displaying of one character, the ASCII table, the C notation of character between simple quotes ('a' or 'z' for example), you're ready for the next step : Day 03's exercises.
+
+  Be careful : You've been warned that at Epitech, we will not always give you all the required tools, and we will most certainly not give you the answers.
+  From the very first exercise (my_affalpha), you will miss a crucial element (however talked about in the C lecture), that you will have to understand, test and master yourself, so that you can reach your goal while respecting the norm.
+
+  So it is now that things start to get hairy, and you will need to be persistant and enduring.
+  These first C exercises will take you time to explore the various possibilities, and understand time at a time the principles of programming.
+
+  Good luck !

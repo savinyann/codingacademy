@@ -1,0 +1,12 @@
+#include <unistd.h>
+#include <stdio.h>
+
+void	my_init(int *a);
+
+void	my_init(int *a)
+{
+  int	*p;
+
+  p = a;
+  *p = 42;
+}

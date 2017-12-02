@@ -1,0 +1,30 @@
+#include <unistd.h>
+#include <stdio.h>
+//void	my_putchar(char c);
+//void	my_putstr(char *str);
+//void	my_first_char_replace(char *str);
+//void	copy_first_char(char *src,char *dst);
+int	array_sum(int *tab,int size);
+
+
+int	array_sum(int *tab,int size)
+{
+  int	n;
+  int	a;
+
+  n = 0;
+  a = 0;
+  while (n <= size)
+    {
+      a = a + tab[n];
+      printf("%d, %d, %d\n",n, tab[n], a);
+      n++;
+    }
+  return (a);
+}
+
+int	main()
+{
+  int tab[3] = {3, 4, 5};
+  printf("%d\n", array_sum(tab,3));
+}

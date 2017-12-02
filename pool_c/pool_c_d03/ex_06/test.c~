@@ -1,0 +1,10 @@
+#include <unistd.h>
+#include <stdio.h>
+
+int	main()
+{
+  int resultat;
+
+  resultat = 7 ^ 2;
+  printf("7 ^ 2 = %d", resultat);
+}

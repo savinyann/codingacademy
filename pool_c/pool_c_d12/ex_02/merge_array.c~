@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+void	print_unique(int *, int);
+
+
+void	print_unique(int *tab, int n)
+{
+  int	i;
+  int	j;
+
+  i = 0;
+   while(i != n)
+     {
+      j = 0;
+      while((tab[j] != tab[i] && j != n) || i == j)
+	{
+	  j++;
+	}
+      if(j == n)
+	{
+	  printf("%d", tab[i]);
+	  if(i == n-1)
+	    {
+	      printf("\n");
+	    }
+	  else
+	    {
+	      printf(",");
+	    }
+	}
+      i++;
+    }
+}
+
+/*
+int	main()
+{
+  int	tab[] = {0, 0, 2, 3, 4, 3, 6, 1};
+  print_unique(tab, 8);
+  return(0);
+}
+*/
