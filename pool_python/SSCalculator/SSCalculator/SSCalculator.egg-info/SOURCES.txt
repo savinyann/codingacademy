@@ -1,0 +1,9 @@
+README
+setup.cfg
+setup.py
+sscalculator.py
+SSCalculator.egg-info/PKG-INFO
+SSCalculator.egg-info/SOURCES.txt
+SSCalculator.egg-info/dependency_links.txt
+SSCalculator.egg-info/top_level.txt
+sscalculator/__init__.py
