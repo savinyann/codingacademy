@@ -1,0 +1,16 @@
+<?php
+function my_get_args(...$str)
+{
+    $i = 0;
+    foreach($str as $value)
+        {
+            $my_array[$i] = $value;
+            $i++;
+        }
+    return($my_array);
+};
+/*
+$my_array = my_get_args("blabla", "blibli", "bloblo", "blublu", 42);
+print_r($my_array);
+*/
+?>

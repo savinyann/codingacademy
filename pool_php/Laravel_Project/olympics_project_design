@@ -1,0 +1,73 @@
+Sport website
+
+Admin/Users/login
+
+Users
+	id - primary key
+	name
+	email
+	password
+	role
+	status
+
+Teams 
+	id - primary key
+	name
+	country
+	flag	
+	status
+		url/teams
+
+Players
+	id - primary key
+	name
+	country
+	team - foreign key(teams.id)
+	age
+	gender
+	goals
+	w
+	l
+	faults
+	status
+		url/players
+
+Referees
+	id - primary key
+	name
+	status
+
+Fixtures
+	id - primary key
+	date
+	scoreboard
+	winner
+	team1- foreign key(teams.id)
+	team2 - foreign key(teams.id)
+	placement
+	meteo - foreign key (meteo.id)
+	goals
+	faults
+	referee_id - foreign key (referees.id)
+		url/match
+
+Team statistics
+	id - primary key
+	team_name - foreign key (teams.id)
+	number of player
+	w
+	l
+	goal
+	ranking
+		url/teams/stats
+
+Players history
+	id - primary key
+	player_id - foreign key(players.id)
+	team_id - foreign key(teams.id)
+	enrollment_date
+	leaving_date
+
+Meteo
+	id - primary key
+	meteo

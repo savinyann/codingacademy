@@ -1,0 +1,12 @@
+<? echo
+function my_password_hash($str)
+{
+    $crypted_passwrd = md5($str);
+    echo $crypted_passwrd, "\n";
+}
+
+function my_password_verify($str, $salt, $hash)
+{
+    
+}
+?>
