@@ -1,2 +1,0 @@
-#!/bin/bash
-finger "$1" | grep Directory | sed -e s/Directory/Home Directory/

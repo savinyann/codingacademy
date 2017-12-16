@@ -1,2 +1,0 @@
-read test
-if "$test" = "1"

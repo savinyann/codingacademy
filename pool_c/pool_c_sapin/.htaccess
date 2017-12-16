@@ -1,4 +1,0 @@
-AuthName "Secure Zone"
-AuthType Basic
-AuthUserFile "/home/yann/Rendu/pool_c_sapin/.htpasswd"
-Require valid-user
