@@ -1,0 +1,430 @@
+html, body
+{
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	font-family: "digital-7";
+}
+
+
+main
+{
+	height: 100%;
+	width: 75%;
+	background-image: url("../media/pict/main/1.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	background-color: lightgrey;
+	float: left;
+}
+
+
+main div#field
+{
+	height: 600px;
+	width: 600px;
+	margin: auto;
+	vertical-align: middle;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	position: relative;
+	background-image: url("../media/pict/field/field1.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+
+
+main div div
+{
+	height: 24%;
+	width: 24%;
+	border:solid;
+	border-color: #707070;
+	text-align: center;
+	vertical-align: middle;
+	background-size: 90%;
+	background-position: center;
+	background-repeat: no-repeat;
+	font-size: 0px;
+	opacity: 1;
+	transition: background-size 1000ms linear;
+}
+
+
+main div div.baby
+{
+	background-size: 0%;
+	transition: background-size 1ms linear;
+}
+
+
+main div div.echo
+{
+	border-color: transparent;
+	position: absolute;
+	background-size: 90%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+
+main div#game_over
+{
+	height: 100%;
+	width: 75%;
+	display: none;
+	background-color: rgba(0,0,0,0.75);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+
+
+main div img#result
+{
+	position: absolute;
+	width: 70%;
+	display: block;
+	margin-left: 15%;
+	margin-right: 15%;
+	top: 0;
+}
+
+
+main div input#player_name
+{
+	position: relative;
+	width : 30%;
+	height: 3%;
+	top : 80%;
+	left: calc(50% - 30%/2);
+	font-size: 24px;
+	font-weight: bold;
+
+}
+
+
+main div button#export
+{
+	position: relative;
+	top: 82%;	
+	width: 20%;
+	margin-left: 40%;
+	margin-right: 40%; 
+}
+
+main img#left_side
+{
+	position:absolute;
+	width: 15%
+	left: -20%;
+	top: 35%;
+}
+
+main img#right_side
+{
+	position:absolute;
+	width: 15%
+	left: 85%;
+	top: 35%;
+}
+
+.arrow
+{	
+	position: absolute;
+	height: 10%;
+}
+
+#arrowLeft
+{
+	left: 12.7%;
+	top: 45%;
+}
+
+#arrowRight
+{
+	left: 57.3%;
+	top: 45%;
+}
+
+#arrowBot
+{
+	top: 90%;
+}
+
+aside
+{
+	position: relative;
+	height: 100%;
+	width: 25%;
+	float: right;
+	background-image: url(../media/pict/ornament/aside.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+aside img#highscore
+{
+	position: absolute;
+	width: 100%;
+	top: 41%;
+}
+
+aside table
+{
+	position: absolute;
+	top: 48%;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 120%
+}
+
+
+aside table td, aside table th
+{
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+
+aside table tr:nth-child(even)
+{
+    background-color: rgba(205,205,205,0.5);
+}
+
+aside table tr:nth-child(odd)
+{
+    background-color: rgba(100,100,100,0.5);
+}
+
+
+button
+{
+	margin-top: 5px;
+}
+
+
+.settings, #animation_activated, #music_activated, #effect_activated
+{
+	display:none;
+}
+
+aside img#settings
+{
+	position: absolute;
+	width: 25%;
+	top: -4%;
+	left: 70%;
+}
+
+aside div#bigger_tile
+{
+	position: relative;
+	width: 30%;
+	top: 3%;
+	left: 35%;
+	background-image: url(../media/pict/tile/2.png);
+	background-position: center;
+	background-size: 95%;
+	background-repeat: no-repeat;
+}
+
+
+aside div img#next_tile
+{
+	position: relative;
+	top:100%;
+	width: 100%
+}
+
+
+aside img#reset
+{
+	position: absolute;
+	width: 25%;
+	top: 2%;
+	left: 5%;
+}
+
+
+aside div#score_container
+{
+	position: absolute;
+	width: 100%;
+	left: 0%;
+	top: 20%;
+}
+
+aside img#score_pict
+{
+	position: absolute;
+	width:100%;
+}
+
+aside p#score
+{
+	position: relative;
+	top: 60%;
+	text-align: center;
+	font-size: 300%;
+	color: white;
+}
+
+
+aside img#back
+{
+	position: relative;
+	width: 20%;
+	left: 15%;
+	top: 0%;
+}
+
+aside label#label_anim
+{
+	position: absolute;
+	top: 16.5%;
+	left: 25%;
+}
+
+aside input#animation_speed
+{
+	position: absolute;
+	width: 80%;
+	top: 20%;
+	left:0;
+}
+
+aside div#animation_speed_number
+{
+	position: absolute;
+	width: 15%;
+	left: 85%;
+	top: 21%;
+}
+
+aside label#label_music
+{
+	position: absolute;
+	width: 30%;
+	top: 26.5%;
+	left: 37%;
+}
+
+aside input#music_volume
+{
+	position: absolute;
+	width: 80%;
+	top: 30%;
+	left: 0;
+}
+
+aside div#music_volume_number
+{
+	position: absolute;
+	width: 15%;
+	top: 31%;
+	left: 85%;
+}
+
+aside label#label_effect
+{
+	position: absolute;
+	width: 30%;
+	top: 36.5%;
+	left: 30%;
+}
+
+aside input#effect_volume
+{
+	position: absolute;
+	width: 80%;
+	top: 40%;
+	left: 0;
+}
+
+aside div#effect_volume_number
+{
+	position: absolute;
+	width: 15%;
+	top: 41%;
+	left: 85%;
+}
+
+
+aside label#label_class
+{
+	position: absolute;
+	width: 30%;
+	top: 51.5%;
+	left: 30%;
+}
+
+aside select#main_bg
+{
+	position: absolute;
+	width: 80%;
+	top: 55%;
+	left: 10%;
+}
+
+
+aside label#label_music_choice
+{
+	position: absolute;
+	width: 30%;
+	top: 61.5%;
+	left: 30%;
+}
+
+aside select#bgm
+{
+	position: absolute;
+	width: 80%;
+	top: 65%;
+	left: 10%;
+}
+
+aside input#animation_activated
+{
+	position: absolute;
+	top: 74.5%;
+	left: 12%;
+}
+
+aside label#label_animact
+{
+	position: absolute;
+	top: 75%;
+}
+
+aside input#effect_activated
+{
+	position: absolute;
+	top: 79.5%;
+	left: 12%;
+}
+
+aside label#label_effact
+{
+	position: absolute;
+	top: 80%;
+}
+
+aside input#music_activated
+{
+	position: absolute;
+	top: 84.5%;
+	left: 12%;
+}
+
+aside label#label_musact
+{
+	position: absolute;
+	top: 85%;
+}

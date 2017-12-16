@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: SSCalculator
+Version: 0.1
+Summary: Simple Scientific Calculator
+Home-page: none@none.none
+Author: Savin Yann
+Author-email: yann.savin@coding-academy.fr
+License: GPL
+Description: Simple Scientific Calculator is a simple scientific calculator. It allow you to make simple but scientific calculations.
+        
+        To install this, use this command:
+        python3 -m easy_install --user SSCalculator/
+Keywords: Simple Scientific Calculator
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Simple Scientific
+Classifier: Topic :: calculation

@@ -1,0 +1,62 @@
+#include <unistd.h>
+#include <stdio.h>
+
+int	my_strupcase(char *);
+void	my_putchar(char c);
+char	my_charupcase(char c);
+
+
+void	my_putchar(char c)
+{
+  write(1, &c, 1);
+}
+
+int	my_stupcase(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i] != '\0')
+    {
+      if (( str[i] >= 97 && str[i] <=122) || (str[i] >= 65 && str[i] <=90))
+	{
+	  i++;
+	}
+      else
+	{
+	  return(0);
+	}
+    }
+  return(1);
+}
+
+char	my_charupcase(char c)
+{
+  char C;
+
+  C = c - 32;
+  return(C);
+}
+
+/*
+int	main()
+{
+  char str1[] = "helloworld";
+  char str2[] = "hello world";
+  char str3[] = "12545hello world456546";
+  char str4[] = "Salut";
+  char str5[] = "tu pues";
+  char str6[] = "Rapasdepic";
+  char str7[] = "s";
+  char str8[] = "bulbizarresalamèchecarapuce";   
+
+  printf("1 %d\n",my_stupcase(str1));  
+  printf("2 %d\n",my_stupcase(str2));
+  printf("3 %d\n",my_stupcase(str3));
+  printf("4 %d\n",my_stupcase(str4));
+  printf("5 %d\n",my_stupcase(str5));
+  printf("6 %d\n",my_stupcase(str6));
+  printf("7 %d\n",my_stupcase(str7));
+  printf("8 %d\n",my_stupcase(str8));
+}
+*/

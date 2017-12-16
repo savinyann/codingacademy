@@ -1,0 +1,48 @@
+#include <unistd.h>
+#include <stdio.h>
+
+void	my_putnbr(int n);
+
+int	my_putchar(char c)
+{
+  write(1, &c, 1);
+}
+
+void my_putnbr(int n)
+{
+  int m;
+  int lenght;
+  int o;
+  int lenght2
+
+  m = n;
+  lenght = 0;
+  while (m >= 10)
+    {
+      m = m / 10;
+      lenght++;
+    }
+  
+  while (lenght > 0 )
+    {
+      lenght2 = lenght;
+      m = n
+      while (lenght2 > 0)
+	{
+	  m = m / 10;
+	  lenght2--;
+	}
+      char c;
+
+      c = m + 48
+      write(1, &c, 1);
+      n = n % 10;
+    }
+  /*  write(1, &c, 1);*/
+}
+
+int	main()
+{
+  my_putnbr(65);
+  my_putnbr(-65);
+}

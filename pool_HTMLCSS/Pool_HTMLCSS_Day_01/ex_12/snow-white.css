@@ -1,0 +1,29 @@
+p
+{
+    font-family: impact;
+}
+
+.p1
+{
+    background-color: black;
+    color: white;
+    font-size: 21px;
+}
+
+.p2
+{
+    background-color: white;
+    color: black;
+    font-size: 27px;
+}
+
+body
+{
+    background-color: yellow;
+}
+
+.blood
+{
+    color: red;
+    font-style: italic;
+}

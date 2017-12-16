@@ -1,0 +1,4 @@
+Simple Scientific Calculator is a simple scientific calculator. It allow you to make simple but scientific calculations.
+
+To install this, use this command:
+python3 -m easy_install --user SSCalculator/
