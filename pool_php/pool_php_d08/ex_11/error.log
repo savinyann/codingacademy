@@ -1,2 +1,0 @@
-	Bad param. Usage: adduser <login> <password> <password_conf> <role> [<email>]
-	Bad param. Usage: modifyuser <id> <login|password|role|email> <newvalue> [<conf_value>]

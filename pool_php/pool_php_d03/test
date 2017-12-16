@@ -1,8 +1,0 @@
-<?php
-srand(1);
-for($i = 0; $i < 150; $i++)
-{
-echo rand(0, 5),"\t";
-}
-echo "\n";
-?>
