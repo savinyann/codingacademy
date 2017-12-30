@@ -1,0 +1,37 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+
+	<div class="container" style="padding-top: 15px">
+	    <div class="row centered-form">
+	        <div class="col-xs-12 col-sm-10 col-md-11 col-sm-offset-0 col-md-offset-0">
+	            <div class="panel panel-default">
+	                <div class="panel-heading">
+	                    <h3 class="panel-title">Edit Comment</h3>
+	                </div>
+	                <div class="panel-body">
+		                <form method="POST">
+		                    <div class="row">
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.message.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+										{{ form.message(class_="form-control input-sm", size=20, value=comment['message']) }}
+										{{ form.user_id(class_="form-control input-sm", size=20, value=comment['user_id']) }}
+										{{ form.article_id(class_="form-control input-sm", size=20, value=comment['article_id']) }}
+		                            </div>
+	                           	</div>
+	                        </div>
+		                    <input type="submit" class="btn btn-info btn-block" value="Edit Comment">
+		                </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+{% endblock %}
+</html>

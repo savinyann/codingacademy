@@ -1,0 +1,16 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+	{% for data in article %}
+		<a href="{{ url_for('article_read', id=data['id']) }}"><div class="alert alert-success">
+			title = {{ data['title'] }}<br>
+			body = {{ data['body'] }}<br>
+			creation date = {{ data['creation_date'] }}<br>
+			{% if session['user'] and data['user_id'] == session['user']['id'] %}
+				<a href="{{ url_for('article_edit', id=data['id']) }}">Edit</a><br>
+				<a href="{{ url_for('article_delete', id=data['id']) }}">Delete</a><br>
+			{% endif %}
+		</div></a>
+	{% endfor %}
+{% endblock %}
+</html>
