@@ -1,0 +1,139 @@
+{% extends "layout/layout.html" %}
+{% block body %}
+
+	<div class="alert alert-success">{{ message }}</div>
+	<div class="alert alert-warning">{{ post }}</div>
+
+
+	<div class="container" style="padding-top: 15px">
+	    <div class="row centered-form">
+	        <div class="col-xs-12 col-sm-10 col-md-11 col-sm-offset-0 col-md-offset-0">
+	            <div class="panel panel-default">
+	                <div class="panel-heading">
+	                    <h3 class="panel-title">Registration</h3>
+	                </div>
+	                <div class="panel-body">
+		                <form method="POST" action="/registration">
+		                    <div class="row">
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.username.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+										{{ form.username(class_="form-control input-sm", size=20) }}
+		                            </div>
+	                           	</div>
+
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.password.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	{{ form.password(class_="form-control input-sm", size=20) }}
+		                            </div>
+		                        </div>
+		                    </div>
+							<div class="row">
+
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.confirm.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	{{ form.confirm(class_="form-control input-sm", size=20) }}
+		                            </div>
+		                        </div>
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.firstname.label(class_="") }} 
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+										{{ form.firstname(class_="form-control input-sm", size=20) }}
+		                            </div>
+	                           	</div>
+		                    </div>
+							<div class="row">
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.lastname.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	{{ form.lastname(class_="form-control input-sm", size=20) }}
+		                            </div>
+		                        </div>
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.email.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	{{ form.email(class_="form-control input-sm", size=20) }}
+		                            </div>
+		                        </div>
+		                    </div>
+							<div class="row">
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.birthdate.label(class_="") }} 
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+										{{ form.birthdate(class_="form-control input-sm", size=20) }}
+		                            </div>
+	                           	</div>
+
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.address.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	{{ form.address(class_="form-control input-sm", size=20) }}
+		                            </div>
+		                        </div>
+		                    </div>
+							<div class="row">
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		<label for="eye_color">Eye Color</label>
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	<input type="color" id="eye_color" name="eye_color" value="#FF25A0" size="20" style="height:40px;width:100%">
+		                            </div>
+		                        </div>
+		                        <div class="col-xs-2 col-sm-2 col-md-2">
+		                        	<div>
+		                        		{{ form.adn.label(class_="") }}
+		                        	</div>
+		                        </div>
+		                        <div class="col-xs-4 col-sm-4 col-md-4">
+		                            <div class="form-group">
+		                            	{{ form.adn(class_="form-control input-sm", size=20) }}
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <input type="submit" class="btn btn-info btn-block" value="Register">
+		                </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+{% endblock %}
+</html>
