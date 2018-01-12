@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-	pokemonUrl = 'https://pokeapi.co/api/v2/pokemon/1/'
+	pokemonUrl = 'https://pokeapi.co/api/v2/pokemon/'
 	$('#getPokemon').click(() => getPokemon())
 
 	function getPokemon()
@@ -8,7 +8,7 @@ $(document).ready(function()
 		pokemon = $('#pokemon').val()
 		if(pokemon != "")
 		{
-			$.get(pokemonUrl, function(data,status)
+			$.get(pokemonUrl+pokemon+"/", function(data,status)
 			{
 
 				$('#display').show()
