@@ -1,0 +1,23 @@
+<input #pokemon placeholder="Pokemon name or ID">
+<button (click)="getPokemon(pokemon.value)">Get Pokemon</button>
+<button (click)="showPokemon()">Show Pokemon</button>
+
+<div *ngIf="pokemon_catched">
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>ID</th>
+			<th>Type</th>
+		</tr>
+
+		<tr>
+			<td>{{pokemon_catched.name}}</td>
+			<td>{{pokemon_catched.id}}</td>
+			<td>
+				<span *ngFor="let type of pokemon_catched.types">
+					{{ type.type.name }} 
+				</span>
+			</td>
+		</tr>
+	</table>
+</div>
