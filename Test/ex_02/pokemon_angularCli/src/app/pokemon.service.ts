@@ -17,9 +17,6 @@ export class PokemonService
 
 	getPokemon(pokemon)
 	{
-		console.log(this.pokemonUrl)
-		console.log(pokemon)
-		console.log(this.pokemonUrl+pokemon)
 		return this.http.get(this.pokemonUrl+pokemon)
 		.pipe(catchError(this.handleError()))
 	}

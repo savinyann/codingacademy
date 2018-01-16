@@ -9,21 +9,18 @@
 
 <div *ngIf="error">{{error.error}}</div>
 
-<div *ngIf="pokemon_catched">
+<div *ngIf="pokemon_keys">
 	<table>
 		<tr>
-			<th>Name</th>
-			<th>ID</th>
-			<th>Type</th>
+			<th *ngFor="let field of pokemon_keys">
+			{{field.substring(0,1).toUpperCase()+field.substring(1)}}</th>
 		</tr>
 
 		<tr>
-			<td>{{pokemon_catched.name}}</td>
-			<td>{{pokemon_catched.id}}</td>
-			<td>
-				<span *ngFor="let type of pokemon_catched.types">
-					{{ type.type.name }} 
-				</span>
+			<td *ngFor="let field of pokemon_keys">
+				{{pokemon_catched[field]}}
+				<!--span *ngIf="typeof(pokemon_catched[field]) == string">
+				</span-->
 			</td>
 		</tr>
 	</table>
