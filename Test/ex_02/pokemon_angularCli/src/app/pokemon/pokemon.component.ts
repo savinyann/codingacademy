@@ -10,6 +10,8 @@ import { PokemonService } from '../pokemon.service'
 export class PokemonComponent implements OnInit
 {
 	pokemon_catched : any
+	error : any
+	loading = false
 
 	constructor(private pokemonService: PokemonService) { }
 
@@ -19,27 +21,31 @@ export class PokemonComponent implements OnInit
 
 	getPokemon(pokemon)
 	{
-		// if(pokemon != "")
-		// {
+		if(pokemon != "")
+		{
+			this.loading = true
+			pokemon = pokemon.toLowerCase()
 			var self = this
 			this.pokemonService.getPokemon(pokemon).subscribe(function(pokemon)
 			{
-				let pokemon_pre =
+				if(pokemon['error'])
 				{
-					id : JSON.parse(pokemon['_body'])['order'],
-					types : JSON.parse(pokemon['_body'])['types'],
-					name : JSON.parse(pokemon['_body'])['name'],
+					self.error = {error : "This pokemon doesn't exist."}
+					self.pokemon_catched = null
 				}
-				self.pokemon_catched = pokemon_pre
+				else
+				{
+					let pokemon_pre =
+					{
+						id : JSON.parse(pokemon['_body'])['order'],
+						types : JSON.parse(pokemon['_body'])['types'],
+						name : JSON.parse(pokemon['_body'])['name'],
+					}
+					self.pokemon_catched = pokemon_pre
+					self.error = null
+				}
+				self.loading = false
 			})
-		//}
-	}
-
-	showPokemon(pokemon)
-	{
-		console.log(this.pokemon_catched)
-		console.log(this.pokemon_catched['name'])
-		console.log(this.pokemon_catched['order'])
-		console.log(this.pokemon_catched['types'])
+		}
 	}
 }

@@ -1,6 +1,13 @@
+<img [ngClass]="loading ? 'normal': 'loading'"
+	src="./assets/img/pokeball.png" alt="pokeball" height="300" width="300">
+<br>
+
+
+
 <input #pokemon placeholder="Pokemon name or ID">
 <button (click)="getPokemon(pokemon.value)">Get Pokemon</button>
-<button (click)="showPokemon()">Show Pokemon</button>
+
+<div *ngIf="error">{{error.error}}</div>
 
 <div *ngIf="pokemon_catched">
 	<table>

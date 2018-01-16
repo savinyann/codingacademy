@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators'
 @Injectable()
 export class PokemonService
 {
-	private pokemonUrl = 'https://pokeapi.co/api/v2/pokemon/1/'
+	private pokemonUrl = 'https://pokeapi.co/api/v2/pokemon/'
 	private httpOptions = 
 	{
 		headers : new HttpHeaders({ 'Content-Type' : 'application/json' })
@@ -17,7 +17,10 @@ export class PokemonService
 
 	getPokemon(pokemon)
 	{
-		return this.http.get(this.pokemonUrl)
+		console.log(this.pokemonUrl)
+		console.log(pokemon)
+		console.log(this.pokemonUrl+pokemon)
+		return this.http.get(this.pokemonUrl+pokemon)
 		.pipe(catchError(this.handleError()))
 	}
 

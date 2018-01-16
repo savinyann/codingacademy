@@ -1,5 +1,28 @@
+*
+{
+	font-size: 30px;
+}
+
 table, th, tr, td
 {
 	border: solid black 1px;
 	border-collapse : collapse;
+}
+
+.normal
+{
+	position: relative;
+	display: inline-block;
+	
+	transition: all 5s ease;
+}
+
+.loading
+{
+	opacity: 1;
+	
+	/* Standard */
+	transform: scale(1) rotate(3600deg);
+	
+	z-index: 1000;
 }
