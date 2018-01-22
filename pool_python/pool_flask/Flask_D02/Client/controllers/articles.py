@@ -48,17 +48,21 @@ class articles:
 
 		for data,error in check_input.items():
 			if(error != True):
+				flash(error)
 				message.append(error)
 
 		if(message == []):
 			response = requests.post('http://localhost:5000/new_article_api', request.form)
-			message = response.json()
+			flash(response.json())
 		article_form = MyArticleCreate()
-		return(render_template('article/create.html', message=message, form=article_form))
+		return(render_template('article/create.html', form=article_form))
 
 	def read(self, id):
 		response = requests.get('http://localhost:5000/article_api/'+str(id))
 		response = response.json()
+		if(response  == "Error: This article doesn't exist yet."):
+			flash(response)
+			abort(404)
 		comments_article = comments()
 		comments_article = comments_article.read(response['id'])
 		comment_form = MyCommentCreate()
@@ -87,14 +91,15 @@ class articles:
 
 		for data,error in check_input.items():
 			if(error != True):
+				flash(error)
 				message.append(error)
 
 		if(message == []):
 			response = requests.post('http://localhost:5000/article_api/'+str(id),request.form)
-			message = response.json()
+			flash(response.json())
 		article = self.check_author(id)
 		article_form = MyArticleCreate()
-		return(render_template('article/edit.html', article=article, form=article_form, message=message))
+		return(render_template('article/edit.html', article=article, form=article_form))
 
 	def delete(self, id):
 		if(self.check_log() == False or self.check_author(id) == False):

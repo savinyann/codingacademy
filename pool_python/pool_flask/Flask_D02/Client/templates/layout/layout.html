@@ -35,15 +35,15 @@
 		</div>
 		<div class=metanav>
 			{% if not session.logged_in %}
-				<div><a href="{{ url_for('registration') }}">Register</a></div>
-				<div><a href="{{ url_for('login') }}">log in</a></div>
-				<div><a href="{{ url_for('article_index') }}">Read article</a></div>
+				<div><a href="{{ url_for('registration') }}"><button>Register</button></a></div>
+				<div><a href="{{ url_for('login') }}"><button>log in</button></a></div>
 			{% else %}
-				<div><a href="{{ url_for('logout') }}">log out</a></div>
-				<div><a href="{{ url_for('article_create') }}">New article</a>
-				<div><a href="{{ url_for('edit', id=session['user']['id']) }}">Edit Me</a>
-				<div><a href="{{ url_for('delete', id=session['user']['id']) }}">Delete Me</a>
+				<div><a href="{{ url_for('logout') }}"><button>log out</button></a></div>
+				<div><a href="{{ url_for('article_create') }}"><button>New article</button></a>
+				<div><a href="{{ url_for('edit', id=session['user']['id']) }}"><button>Edit Me</button></a>
+				<div><a href="{{ url_for('delete', id=session['user']['id']) }}"><button>Delete Me</button></a>
 			{% endif %}
+				<div><a href="{{ url_for('article_index') }}"><button>Read article</button></a></div>
 		</div>
 		{% for message in get_flashed_messages() %}
 			<div class="alert alert-success">

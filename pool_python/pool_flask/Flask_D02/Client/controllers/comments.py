@@ -24,7 +24,6 @@ class comments:
 		else:
 			response = requests.get('http://localhost:5000/comment_api/'+str(article_id)+'/'+str(comment_id))
 		response = response.json()[0]
-		print(response)
 		if(response['user_id'] == session['user']['id']):
 			return(response)
 		flash('You are not allowed to edit this comment.')
@@ -46,6 +45,7 @@ class comments:
 
 		for data,error in check_input.items():
 			if(error != True):
+				flash(error)
 				message.append(error)
 
 		if(message == []):

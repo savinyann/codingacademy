@@ -9,12 +9,12 @@ class MyRegister(FlaskForm):
 	username = StringField('Username', validators=[DataRequired()])
 	password = PasswordField('Password', validators=[DataRequired()])
 	confirm = PasswordField('Confirm Password', validators=[DataRequired()])
-	firstname = StringField('First Name', validators=[DataRequired()])
-	lastname = StringField('Last Name', validators=[DataRequired()])
+	first_name = StringField('First Name', validators=[DataRequired()])
+	last_name = StringField('Last Name', validators=[DataRequired()])
 	email = EmailField('Email')
 	birthdate = DateField('Birthdate')
 	address = StringField('Address')
-	adn = StringField('Favorite ADN sequence')
+	adn_sequence = StringField('Favorite ADN sequence')
 
 class MyLogin(FlaskForm):
 	username = StringField('Username', validators=[DataRequired()])
@@ -24,12 +24,12 @@ class MyEdit(FlaskForm):
 	username = StringField('Username', validators=[DataRequired()])
 	password = PasswordField('Password', validators=[DataRequired()])
 	confirm = PasswordField('Confirm Password', validators=[DataRequired()])
-	firstname = StringField('First Name', validators=[DataRequired()])
-	lastname = StringField('Last Name', validators=[DataRequired()])
+	first_name = StringField('First Name', validators=[DataRequired()])
+	last_name = StringField('Last Name', validators=[DataRequired()])
 	email = EmailField('Email')
 	birthdate = DateField('Birthdate')
 	address = StringField('Address')
-	ADN = StringField('Favorite ADN sequence')
+	adn_sequence = StringField('Favorite ADN sequence')
 
 class MyArticleCreate(FlaskForm):
 	title = StringField('Title', validators=[DataRequired()])

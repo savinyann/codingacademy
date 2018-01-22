@@ -34,7 +34,8 @@ class users:
 		post['address'] = request.form['address']
 		post['ADN'] = request.form['adn']
 		post['eyecolor'] = request.form['eye_color']
-		post['password'] = [request.form['password'], request.form['confirm']]
+		post['password'] = request.form['password']
+		post['confirm'] = request.form['confirm']
 
 		check_input = CheckInput(post);
 		check_input = check_input.get_CheckInput();
@@ -88,7 +89,6 @@ class users:
 
 	def login_api(self):# username, password):
 		message = []
-		print('echo')
 		log = {}
 
 		log['username'] = str(request.form['username'])
@@ -119,6 +119,7 @@ class users:
 			result['address'] = user['address']
 			result['eye_color'] = user['eye_color']
 			result['adn_sequence'] = user['adn_sequence']
+			result['birthdate'] = user['birthdate']
 			return(json.dumps(result))
 		else:
 			return(json.dumps({"error": 'Bad Password'}))
@@ -128,11 +129,7 @@ class users:
 		message = []
 		form = {}
 		for data in post:
-			if(data == "password"):
-				form[data] = [post['password'], post['confirm']]
-			elif(data != 'confirm'):
-				form[data] = post[data]
-		print(form)
+			form[data] = str(post[data])
 		check_input = CheckInput(form);
 		check_input = check_input.get_CheckInput();
 
@@ -141,7 +138,7 @@ class users:
 				return(json.dumps({"error":error}))
 
 		if(message == []):
-			form['password'], form['salt'] = password_hash(form['password'][0])
+			form['password'], form['salt'] = password_hash(form['password'])
 			return(json.dumps(self.DB.store_user(form)))
 		return(json.dumps({"error":"something went wrong, I don't know what, I don't know why."}))
 
@@ -156,10 +153,7 @@ class users:
 		message = []
 		form = {}
 		for data in post:
-			if(data == "password"):
-				form[data] = [post['password'], post['confirm']]
-			elif(data != 'confirm'):
-				form[data] = post[data]
+			form[data] = post[data]
 		
 		check_input = CheckInput(form);
 		check_input = check_input.get_CheckInput();
@@ -169,7 +163,7 @@ class users:
 				return(json.dumps(error))
 
 		if(message == []):
-			form['password'], form['salt'] = password_hash(form['password'][0])
+			form['password'], form['salt'] = password_hash(form['password'])
 			form['id'] = user_id
 			return(json.dumps(self.DB.update_user(form)))
 		return(json.dumps("something went wrong, I don't know what, I don't know why."))

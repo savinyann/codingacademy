@@ -2,7 +2,7 @@
 import os,sys
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import model.database as database
+import database as database
 
 
 class model:

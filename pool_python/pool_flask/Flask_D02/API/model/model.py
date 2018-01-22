@@ -19,18 +19,20 @@ class model:
 		return(self.db.SQLquery(query, variable))
 
 	def store_user(self, post):
-		if(self.usernameAlreadyUsed(post['username']) == False):
+		if(self.usernameAlreadyUsed(post['username'], 'store') == False):
 			query = 'INSERT INTO users (username, password, salt, first_name, last_name, email, birthdate, address, eye_color, adn_sequence) VALUES (?,?,?,?,?,?,?,?,?,?)'
-			variable = [post['username'], post['password'], post['salt'], post['firstname'], post['lastname'], post['email'], post['birthdate'], post['address'], post['eyecolor'], post['ADN']]
+			variable = [post['username'], post['password'], post['salt'], post['first_name'], post['last_name'], post['email'], post['birthdate'], post['address'], post['eye_color'], post['adn_sequence']]
 			self.db.SQLquery(query, variable)
-		return("Everything was fine, and you were nice, so I have put everything in DB. It was nice to meet you, have a nice day!")
+			return("Everything was fine, and you were nice, so I have put everything in DB. It was nice to meet you, have a nice day!")
 		return("Username is already used. Sorry.")
 
 	def update_user(self, post):
-		query = 'UPDATE users SET username = ?, password = ?, salt = ?, first_name = ?, last_name = ?, email = ?, birthdate = ?, address = ?, eye_color = ?, adn_sequence = ? where id = ?'
-		variable = [post['username'], post['password'], post['salt'], post['firstname'], post['lastname'], post['email'], post['birthdate'], post['address'], post['eyecolor'], post['ADN'], post['id']]
-		self.db.SQLquery(query, variable)
-		return('User has been edited.')
+		if(self.usernameAlreadyUsed(post['username'], 'update') == False):
+			query = 'UPDATE users SET username = ?, password = ?, salt = ?, first_name = ?, last_name = ?, email = ?, birthdate = ?, address = ?, eye_color = ?, adn_sequence = ? where id = ?'
+			variable = [post['username'], post['password'], post['salt'], post['first_name'], post['last_name'], post['email'], post['birthdate'], post['address'], post['eye_color'], post['adn_sequence'], post['id']]
+			self.db.SQLquery(query, variable)
+			return('User has been edited.')
+		return("Username is already used. Sorry.")
 
 	def delete_user(self, id):
 		query = 'DELETE FROM users WHERE id = ?'
@@ -43,9 +45,12 @@ class model:
 		variable = [user['username']]
 		return(self.db.SQLquery(query, variable))
 
-	def usernameAlreadyUsed(self, username):
+	def usernameAlreadyUsed(self, username, caller):
+		length = 0 if(caller == 'store') else 1
 		query = 'SELECT * FROM users WHERE username = ?'
 		variable = [username]
-		if(self.db.SQLquery(query, variable) == []):
+		if(len(self.db.SQLquery(query, variable)) == 0):
+			return(False)
+		if(len(self.db.SQLquery(query, variable)) == length):
 			return(False)
 		return(True)

@@ -21,10 +21,13 @@ class CheckInput():
 			if(key == 'password'):
 				self.checkInput[key] = self.Check_Password(value)
 
-			if(key == 'firstname'):
+			if(key == 'confirm'):
+				self.checkInput[key] = self.Check_Confirm(input['password'], input['confirm'])
+
+			if(key == 'first_name'):
 				self.checkInput[key] = self.Check_FirstName(value)
 
-			if(key == 'lastname'):
+			if(key == 'last_name'):
 				self.checkInput[key] = self.Check_LastName(value)
 
 			if(key == 'email'):
@@ -36,10 +39,10 @@ class CheckInput():
 			if(key == 'address'):
 				self.checkInput[key] = self.Check_Address(value)
 
-			if(key == 'eyecolor'):
+			if(key == 'eye_color'):
 				self.checkInput[key] = self.Check_EyeColor(value)
 
-			if(key == 'ADN'):
+			if(key == 'adn_sequence'):
 				self.checkInput[key] = self.Check_ADN(value)
 
 	def get_CheckInput(self):
@@ -57,20 +60,15 @@ class CheckInput():
 
 
 	def Check_Password(self, password):
-		if(type(password).__name__ == 'str'):
-			if(len(password) == 0):
-				return("Do you really expect to come in without a password ? LoL !")
-			if(len(password) <= 8):
-				return('I do not have to check if this is your password, because it is an invalide password.')
-		else:
-			if(len(password[0]) == 0):
-				return("Yeah, fuck security ! FUCK YOU, PUT A FUCKING PASSWORD !")
-			if(len(password[0]) <= 8):
-				return("ARE YOU KIDDING ME ? SOME PEOPLE WILL CRACK YOUR PASSWORD IN LEAST THAN A SECOND, YOU CUNT ! MAKE IT LONGER.")
-			if(len(password[0]) >15):
-				return("Ok, password length is important, but too long is too long. Please, make it shorter.")
-			if(password[0] != password[1]):
-				return("This password doesn't match with its confirmation. Please, go back to CP and learnt to write.")
+		if(len(password) == 0):
+			return("Do you really expect to come in without a password ? LoL !")
+		if(len(password) < 8):
+			return('I do not have to check if this is your password, because it is an invalide password.')
+		return(True)
+
+	def Check_Confirm(self, password, confirm):
+		if(password != confirm):
+			return("This password doesn't match with its confirmation. Please, go back to CP and learnt how to write.")
 		return(True)
 		
 

@@ -48,15 +48,17 @@ class CheckInput():
 
 
 	def Check_Password(self, password):
+		print(type(password))
 		if(type(password).__name__ == 'str'):
 			if(len(password) == 0):
 				return("Do you really expect to come in without a password ? LoL !")
 			if(len(password) <= 8):
 				return('I do not have to check if this is your password, because it is an invalide password.')
 		else:
+			return(True)
 			if(len(password[0]) == 0):
 				return("Yeah, fuck security ! FUCK YOU, PUT A FUCKING PASSWORD !")
-			if(len(password[0]) <= 8):
+			if(len(password[0]) <= 7):
 				return("ARE YOU KIDDING ME ? SOME PEOPLE WILL CRACK YOUR PASSWORD IN LEAST THAN A SECOND, YOU CUNT ! MAKE IT LONGER.")
 			if(len(password[0]) >15):
 				return("Ok, password length is important, but too long is too long. Please, make it shorter.")

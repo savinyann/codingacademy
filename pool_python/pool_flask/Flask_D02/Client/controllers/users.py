@@ -35,15 +35,18 @@ class users:
 
 		for form,error in check_input.items():
 			if(error != True):
+				flash(error)
 				message.append(error)
 
 		if(message == []):
 			response = requests.post('http://localhost:5000/registration_api', post)
-			message=(response.json())
+			message =response.json()
+			flash(message)
+			if(message != "Username is already used. Sorry."):
+				return(redirect(url_for('login')))
 			
 		registration_form = MyRegister()
-	#	message = time.mktime(datetime.datetime.strptime(request.form['birthdate'], "%Y-%m-%d").timetuple())
-		return render_template('registration.html', form=registration_form, message=message, post=post)
+		return render_template('registration.html', form=registration_form, post=post)
 
 	def login(self):
 		login_form = MyLogin()
@@ -53,7 +56,6 @@ class users:
 		del session['user']
 		session['logged_in'] = False
 		flash('You have been disconnected.')
-		print('Disconnected')
 		return(redirect(url_for('home')))
 
 
@@ -95,18 +97,33 @@ class users:
 
 	def update(self, id):
 		message = []
+		print('###############################')
+		print('###############################')
+		print('###############################')
+		for data in request.form:
+			print(data, " : ", request.form[data])
+		print('###############################')
+		print('###############################')
+		print('###############################')
 		check_input = CheckInput(request.form)
 		check_input = check_input.get_CheckInput()
 
 		for data,error in check_input.items():
 			if(error != True):
+				flash(error)
 				message.append(error)
 
 		if(message ==[]):
 			response = requests.post('http://localhost:5000/user_api/'+str(id), request.form)
 			message = response.json()
+			flash(message)
+			if(message == 'User has been edited.'):
+				for data in request.form:
+					session['user'][data] = request.form[data]
+
 			for key in response:
 				if(key == 'error'):
+					flash(error)
 					message.append(error)
 
 		edit_form = MyEdit()
@@ -116,6 +133,12 @@ class users:
 		return(render_template('user/delete.html'))
 
 	def destroy(self, id):
-		response = requests.delete('http://localhost:5000/user_api/'+str(id))
-		message = response.json()
-		return(render_template('user/delete.html', message=message))
+		for data in request.form:
+			if(data == 'del'):
+				response = requests.delete('http://localhost:5000/user_api/'+str(id))
+				del session['user']
+				session['logged_in'] = False
+				flash(response.json())
+				return(redirect(url_for('home')))
+		flash('You are not deleted. You have to check the little box to confirm your destruction.')
+		return(render_template('user/delete.html'))

@@ -47,11 +47,13 @@ class articles:
 
 	def read_api(self,id):
 		article = {}
-		dumb = self.DB.dumb_db(id)[0]
-		article['id'] = dumb['id'];
-		article['title'] = dumb['title'];
-		article['body'] = dumb['body'];
-		article['user_id'] = dumb['user_id'];
+		dumb = self.DB.dumb_db(id)
+		if(len(dumb) == 0):
+			return(json.dumps("Error: This article doesn't exist yet."))
+		article['id'] = dumb[0]['id'];
+		article['title'] = dumb[0]['title'];
+		article['body'] = dumb[0]['body'];
+		article['user_id'] = dumb[0]['user_id'];
 		return(json.dumps(article))
 
 	def update_api(self,id):

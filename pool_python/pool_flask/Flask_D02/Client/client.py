@@ -164,11 +164,8 @@ def test():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('error/404.html'), 404
+    return render_template('error/404.html', e=e), 404
 
 @app.errorhandler(401)
 def unauthentified_to_API(e):
     return render_template('error/401.html'), 401
-
-
-app.run(port=3000)

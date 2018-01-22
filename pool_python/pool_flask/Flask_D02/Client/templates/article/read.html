@@ -7,6 +7,10 @@
 	Body = {{ data['body'] }}<br>
 	created_at = {{ data['created_at'] }}<br>
 	user_id = {{ data['user_id'] }}<br>
+	{% if session['user'] and data['user_id'] == session['user']['id'] %}
+		<a href="{{ url_for('article_edit', id=data['id']) }}"><button>Edit</button></a><br>
+		<a href="{{ url_for('article_delete', id=data['id']) }}"><button>Delete</button></a><br>
+	{% endif %}
 	</div>
 
 	{% for comment in comments %}
