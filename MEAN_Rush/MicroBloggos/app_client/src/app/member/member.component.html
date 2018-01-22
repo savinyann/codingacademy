@@ -1,0 +1,55 @@
+<div *ngIf='response.ok' class="alert alert-success "> {{response.ok}}</div>
+<div *ngIf='response.error' class="alert alert-danger"> {{response.error}}</div>
+
+<div class="container"><div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 center">
+
+    	<!--div class="card card-inverse card-info">
+			<img class="card-img-top" src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+		</div-->
+
+		<form role="form">
+			<fieldset>
+				<div class="form-group">
+				<label for="name">Name: </label>
+                <input #name id="name" value={{member.name}} class="form-control input-lg" placeholder="Name">
+            	</div>
+
+				<div class="form-group">
+				<label for="email">E-mail: </label>
+                <input #email id="email" value={{member.email}} class="form-control input-lg" placeholder="E-mail">
+            	</div>
+
+				<div class="form-group">
+				<label for="password">Password: </label>
+                <input #password id="password" type="password" value="" class="form-control input-lg" placeholder="Password">
+            	</div>
+
+				<div class="form-group">
+				<label for="confirm">Confirm Password: </label>
+                <input #confirm id="confirm" type="password" value="" class="form-control input-lg" placeholder="Confirm Password">
+            	</div>
+
+				<div class="form-group">
+				<label for="old">Old Password: </label>
+                <input #old id="old" type="password" value="" class="form-control input-lg" placeholder="Old Password">
+            	</div>
+
+            	<div>
+				<span class="button-checkbox" style="margin: auto;" *ngIf="delete === false || delete === true">
+					<label type="button" for="delete_me" class="btn " data-color="info"><input type="checkbox" id="delete_me" [checked]='delete' (change)="delete = !delete"> I don't want to be here anymore !</label>
+				</span>
+				</div>
+                    
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+                        <button class="btn btn-lg btn-success btn-block" (click)="updateMe(name.value,password.value,confirm.value,old.value,email.value)">Update Me</button>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<button class="btn btn-lg btn-primary btn-block" (click)="deleteMe()">Delete Me</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div></div>

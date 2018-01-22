@@ -1,0 +1,39 @@
+<div class="span7">   
+<div class="widget stacked widget-table action-table">				
+	<div class="widget-header member_center">
+		<h3>Members</h3>
+	</div> <!-- /widget-header -->
+	
+	<div class="widget-content">
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Followers</th>
+					<th class="td-actions"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let member of members">
+					<td *ngIf="member._id != id">{{member.name}}</td>
+					<td *ngIf="member._id != id">Unknow</td>
+					<td *ngIf="member._id != id">
+						<button class="btn btn-lg btn-success btn-block opacity" 
+							*ngIf="!member.followers.includes(id)"
+							(click)="addFollow(member)">
+							Follow
+						</button>
+						<button class="btn btn-lg btn-danger btn-block opacity" 
+							*ngIf="member.followers.includes(id)"
+							(click)="removeFollow(member)">
+							UnFollow
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div> <!-- /widget-content -->
+
+</div> <!-- /widget -->
+</div>

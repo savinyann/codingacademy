@@ -1,0 +1,52 @@
+<div *ngIf='response.ok' class="alert alert-success "> {{response.ok}}</div>
+<div *ngIf='response.error' class="alert alert-danger"> {{response.error}}</div>
+<div *ngIf='response.email' class="alert alert-danger"> {{response.email}}</div>
+<div *ngIf='response.email' class="alert alert-danger"> {{response.email}}</div>
+<div *ngIf='response.confirm' class="alert alert-danger"> {{response.confirm}}</div>
+<div *ngIf='response.password' class="alert alert-danger"> {{response.password}}</div>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 center">
+		<form role="form">
+			<fieldset>
+				<h2>Registration</h2>
+				<hr class="colorgraph">
+
+				<div class="form-group">
+                    <input type="text" #name class="form-control input-lg" placeholder="Name">
+				</div>
+
+				<div class="form-group">
+                    <input type="email" #email class="form-control input-lg" placeholder="E-mail">
+				</div>
+				
+				<div class="form-group">
+                    <input type="password" #password class="form-control input-lg" placeholder="Password">
+				</div>
+				
+				<div class="form-group">
+                    <input type="password" #confirm class="form-control input-lg" placeholder="Confirm Password">
+				</div>
+
+				<hr class="colorgraph">
+				<div class="row">
+
+					<div class="col-xs-12 col-sm-12 col-md-12">
+                        <button class="btn btn-lg btn-success btn-block" (click)="UserRegister(name.value,password.value,confirm.value,email.value)">Register</button>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						Already a member ? <a routerLink="/login">Log In</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+</div>

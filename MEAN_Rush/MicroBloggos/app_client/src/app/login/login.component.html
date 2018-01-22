@@ -1,0 +1,44 @@
+<div *ngIf='login.ok' class="alert alert-success "> {{login.ok}}</div>
+<div *ngIf='login.error' class="alert alert-danger"> {{login.error}}</div>
+<div *ngIf='login.email' class="alert alert-danger"> {{login.email}}</div>
+<div *ngIf='login.password' class="alert alert-danger"> {{login.password}}</div>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 center">
+		<form role="form">
+			<fieldset>
+				<h2>Please Sign In</h2>
+				<hr class="colorgraph">
+				<div class="form-group">
+                    <input type="email" #email class="form-control input-lg" placeholder="Email Address">
+				</div>
+				<div class="form-group">
+                    <input type="password" #password class="form-control input-lg" placeholder="Password">
+				</div>
+				<span class="button-checkbox">
+					<label type="button" for="remember_me" class="btn" data-color="info">
+						<input type="checkbox" name="remember_me" id="remember_me"
+						(change)="remember_me = !remember_me"> Remember Me
+					</label>
+                    
+					<a class="btn btn-link pull-right align-right login"
+						(click)="password_forgetted()">
+				Forgot Password?</a>
+				</span>
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+                        <button class="btn btn-lg btn-success btn-block" (click)="UserLogin(password.value, email.value)">Sign In</button>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<a routerLink="/register" class="btn btn-lg btn-primary btn-block">Register</a>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+</div>

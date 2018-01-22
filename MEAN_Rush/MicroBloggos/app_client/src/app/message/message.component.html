@@ -1,0 +1,158 @@
+<div *ngIf='response.ok' class="alert alert-success "> {{response.ok}}</div>
+<div *ngIf='response.error' class="alert alert-danger"> {{response.error}}</div>
+
+
+<!-- ################# NEW MESSAGE ################# -->
+<div class="container" *ngIf="!edit">
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 center">				
+		<fieldset>
+			<div class="form-group">
+				<label for="message">Message: </label>
+	            <textarea cols="45" rows="3" maxlength="140"
+	            class="form-control input-lg" id="message"
+	            [(ngModel)]="message">
+	        	</textarea>
+				<div class="char_remain">{{140 - message.length}} caracters remaining</div>
+	    	</div>
+
+
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6">
+	                <button class="btn btn-lg btn-success btn-block" (click)="newMessage()">New Message</button>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6">
+	                <button class="btn btn-lg btn-danger btn-block" (click)="message=null">Reset</button>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>
+</div>
+
+
+<!-- ################# EDIT MESSAGE ################# -->
+<div class="container" *ngIf="edit">
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3 center">				
+		<fieldset>
+			<div class="form-group">
+				<label for="edit">Edit message: </label>
+	            <textarea cols="45" rows="3" maxlength="140"
+	            class="form-control input-lg" id="edit"
+	            [(ngModel)]="edit.message">
+	        	</textarea>
+				<div class="char_remain">{{140 - edit.message.length}} caracters remaining</div>
+	    	</div>
+
+
+			<hr class="colorgraph">
+			<div class="row">
+
+				<div class="col-xs-6 col-sm-6 col-md-6">
+	                <button class="btn btn-lg btn-success btn-block" (click)="editMessage()">Edit Message</button>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6">
+	                <button class="btn btn-lg btn-danger btn-block" (click)="edit=null">Cancel</button>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>
+</div>
+
+
+<!-- ################# EVERY MESSAGES ################# -->
+<div class="span7" *ngIf="!hashtagMessages.hashtag">   
+<div class="widget stacked widget-table action-table">				
+	<div class="widget-header member_center">
+		<h3>My Messages :</h3>
+	</div> <!-- /widget-header -->
+	
+	<div class="widget-content">
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Message</th>
+					<th>Manage</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let mes of messages">
+					<td>
+						{{mes.creationDate.split('T')[0]}}<br>
+						{{mes.creationDate.split('T')[1].split('.')[0]}}
+					</td>
+					<td>
+						<span *ngFor="let word of mes.message.split(' ')">
+							<span class="hashtag"
+								*ngIf="word.substring(0,1) == '#'"
+								(click)=getHashtag(word)>
+								{{word}}</span>
+							<span *ngIf="word.substring(0,1) != '#'">{{word}}</span>
+						</span>
+					</td>
+					<td>
+						<!--btn btn-lg btn-danger btn-block-->
+					<i class="btn medium material-icons editMessage"
+						(click)="placeInEdit(mes)">
+						edit
+					</i>
+					<i class="btn medium material-icons deleteMessage" 
+						(click)="deleteMessage(mes)">
+						delete
+					</i>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+</div>
+
+
+<!-- ################# HASHTAG CLICKED ################# -->
+<div class="span7" id="hashtag" *ngIf="hashtagMessages.hashtag">
+<div class="widget stacked widget-table action-table">				
+	<div class="widget-header member_center">
+		<h3>{{hashtagMessages.hashtag}} :</h3>
+	</div> <!-- /widget-header -->
+	
+	<div class="widget-content">
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Message</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let mess of hashtagMessages.messages">
+					<td>
+						{{mess.creationDate.split('T')[0]}}<br>
+						{{mess.creationDate.split('T')[1].split('.')[0]}}
+					</td>
+					<td>
+						<span *ngFor="let word of mess.message.split(' ')">
+							<span class=hashtag
+								*ngIf="word.substring(0,1) == '#'"
+								(click)=getHashtag(word)>
+								{{word}}</span>
+							<span *ngIf="word.substring(0,1) != '#'">{{word}}</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+		    <button class="btn btn-lg btn-info btn-block" (click)="hashtagMessages=[]">Reset</button>
+		</div>
+	</div>
+
+</div>
+</div>

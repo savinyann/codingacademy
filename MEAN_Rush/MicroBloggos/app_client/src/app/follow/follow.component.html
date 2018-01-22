@@ -1,0 +1,160 @@
+<p *ngIf='response.ok' style='background-color: lightgreen'> {{response.ok}}</p>
+<p *ngIf='response.error' style='background-color: red'> {{response.error}}</p>
+
+
+<!-- ################# SEARCH HASHTAG ################# -->
+<div class="container">
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 center">
+		<fieldset>
+			<div class="form-group row">
+				<div class="col-xs-8 col-sm-8 col-md-8">
+	            	<input class="form-control input-lg" id="hashtag"
+	            	#searchHashtag placeholder="Search a hashtag">
+	            </div>
+
+				<div class="col-xs-4 col-sm-4 col-md-4">
+	                <button class="btn btn-lg btn-info btn-block" (click)="getHashtag(searchHashtag.value)">
+	                	Search
+	                </button>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>
+</div>
+<!-- #################  END SEARCH HASHTAG ################# -->
+
+
+<!-- ################# HASHTAG CLICKED ################# -->
+<div class="span7" id="hashtag" *ngIf="hashtagMessages.hashtag">
+<div class="widget stacked widget-table action-table">				
+	<div class="widget-header member_center">
+		<h3>{{hashtagMessages.hashtag}} :</h3>
+	</div> <!-- /widget-header -->
+	
+	<div class="widget-content">
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Message</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let mess of hashtagMessages.messages">
+					<td>
+						{{mess.creationDate.split('T')[0]}}<br>
+						{{mess.creationDate.split('T')[1].split('.')[0]}}
+					</td>
+					<td>
+						<span *ngFor="let word of mess.message.split(' ')">
+							<span class="hashtag"
+								*ngIf="word.substring(0,1) == '#'"
+								(click)=getHashtag(word)>
+								{{word}}</span>
+							<span *ngIf="word.substring(0,1) != '#'">{{word}}</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+		    <button class="btn btn-lg btn-info btn-block" (click)="hashtagMessages=[]">Reset</button>
+		</div>
+	</div>
+
+</div>
+</div>
+<!-- ################# END OF HASHTAG CLICKED ################# -->
+
+
+<!-- ################# FOLLOWING ################# -->
+<h2>My Following</h2>
+<div class="span7" *ngIf="following">
+<div class="widget stacked widget-table action-table"
+	*ngFor="let followed of following">
+	<div class="widget-header member_center row">
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<h3>Author : {{followed.author}}</h3>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6">
+			<button class="btn btn-lg btn-primary btn-block"
+				(click)="removeFollow(followed)">Unfollow
+			</button>
+		</div>
+	</div>
+	
+	<div class="widget-content" *ngIf="followed.message.length != 0">
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Message: </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let message of followed.message">
+					<td>
+
+						<span *ngFor="let word of message.split(' ')">
+							<span class="hashtag"
+							*ngIf="word.substring(0,1) == '#'">
+								<a (click)=getHashtag(word)>
+								{{word}}</a></span>
+							<span *ngIf="word.substring(0,1) != '#'">{{word}}</span>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="widget-content no_message" *ngIf="followed.message.length == 0">
+	This user has not posted any messages. Why do you follow him ?</div>
+</div>
+</div>
+<!-- ################# END FOLLOWING ################# -->
+
+
+<!-- ################# FOLLOWERS ################# -->
+<div class="span7">   
+<div class="widget stacked widget-table action-table"
+	*ngIf="followers.length != 0">
+	<div class="widget-header member_center">
+		<h3>My Followers :</h3>
+	</div> <!-- /widget-header -->
+	
+	<div class="widget-content">
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Manage</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let follower of followers">
+					<td>
+						{{follower.name}}
+					</td>
+					<td>
+						<button
+							*ngIf="!blockedFollower.includes(follower._id)"
+							(click)="block(follower)">Block
+						</button>
+						<button 
+							*ngIf="blockedFollower.includes(follower._id)"
+							(click)="unblock(follower)">Unblock
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<div *ngIf="followers.length == 0">Nobody like you.</div>
+</div>
+<!-- ################# END FOLLOWERS ################# -->
