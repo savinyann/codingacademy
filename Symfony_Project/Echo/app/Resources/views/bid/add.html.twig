@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+<h1>Add a bid on {{ product }} !</h1>
+
+{% if product.price %}
+	<p>Price : {{ product.price }}</p>
+{% endif %}
+<p>starting price : {{ product.startingPrice }}</p>
+<p>minimum bid : {{ product.minBid }}</p>
+<p>bid started : {{ product.started|date('Y-m-d H:i:s') }}</p>
+<p>bid end : {{ product.ended|date('Y-m-d H:i:s') }}</p>
+{% if product.currentbuyer %}
+	Current bid : {{ product.currentbid - product.minbid }}
+	Proposed by : {{ product.currentbuyer }}
+{% endif %}
+<p></p>
+
+    {{ form_start(formbid) }}
+        {{ form_widget(formbid) }}
+        <input type="submit" value="Create" />
+    {{ form_end(formbid) }}
+
+    {{ form_start(formautobid) }}
+        {{ form_widget(formautobid) }}
+        <input type="submit" value="Create" />
+    {{ form_end(formautobid) }}
+
+{% endblock %}

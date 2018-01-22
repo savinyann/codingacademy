@@ -1,0 +1,11 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+<h2>My FoSUser_CheckEmail_Content</h2>
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<p>
+{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+</p>
+{% endblock %}

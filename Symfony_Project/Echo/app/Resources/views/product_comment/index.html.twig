@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Product_comments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Comment</th>
+                <th>Rate</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_Comment in product_Comments %}
+            <tr>
+                <td><a href="{{ path('product_comment_show', { 'id': product_Comment.id }) }}">{{ product_Comment.id }}</a></td>
+                <td>{{ product_Comment.comment }}</td>
+                <td>{{ product_Comment.rate }}</td>
+                <td>{% if product_Comment.created %}{{ product_Comment.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product_Comment.updated %}{{ product_Comment.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_comment_show', { 'id': product_Comment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_comment_edit', { 'id': product_Comment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_comment_new') }}">Create a new product_Comment</a>
+        </li>
+    </ul>
+{% endblock %}

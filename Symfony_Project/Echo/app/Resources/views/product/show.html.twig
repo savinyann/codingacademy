@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Product</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ product.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Startingprice</th>
+                <td>{{ product.startingPrice }}</td>
+            </tr>
+            <tr>
+                <th>Minbid</th>
+                <td>{{ product.minBid }}</td>
+            </tr>
+            <tr>
+                <th>Autobid</th>
+                <td>{% if product.autobid %}{{ product.autobid|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Visitedby</th>
+                <td>{% if product.visitedBy %}{{ product.visitedBy|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if product.created %}{{ product.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if product.updated %}{{ product.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+        {% if app.user == product.user %}
+            <li>
+                <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        {% endif %}
+    </ul>
+        {% if product.comments|length() != 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Comment</th>
+                    <th>Author</th>
+                    <th>Rate</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in product.comments %}
+                    <tr>
+                        <td>{{comment.comment}}</td>
+                        <td>{{comment.author.username}}</td>
+                        <td>{{comment.rate}}</td>
+                        <td>{{comment.updated|date('Y-m-d H:i:s')}}</td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+        {% endif %}
+
+    {% if product.user != app.user %}
+        <a href="{{ path('product_comment_new', { 'productid': product.id }) }}">New Comment</a>
+        {% if "now"|date('Y-m-d H:i:s') < product.ended|date('Y-m-d H:i:s') %}
+            <a href="{{ path('add_bid', { 'id': product.id }) }}">Make a bid</a>
+            <a href="{{ path('product_purchase', { 'id': product.id }) }}">Buy it !</a>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

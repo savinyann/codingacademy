@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Products list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Seller</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Startingprice</th>
+                <th>Category</th>
+                <th>Visitedby</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        {% if "now"|date('Y-m-d H:i:s') < product.ended|date('Y-m-d H:i:s') %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': product.user.id }) }}">{{product.user}}</a></td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.startingPrice }}</td>
+                <td><a href="{{ path('category_show', { 'id': product.category.id }) }}">{{ product.category }}</a></td>
+                <td>{% if product.visitedBy %}{{ product.visitedBy|join(', ') }}{% endif %}</td>
+                <td>{% if product.ended %}{{ product.ended|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') or app.user == product.user %}
+                            <li>
+                                <a href="{{ path('product_edit', {'id' : product.id }) }}">edit</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

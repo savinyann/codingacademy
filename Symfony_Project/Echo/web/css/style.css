@@ -1,0 +1,85 @@
+html, body
+{
+	width: 100%;
+	height: 100%;
+}
+
+div#my_container
+{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 0;
+}
+
+header
+{
+	width: 100%;
+	background-color: orange;
+	margin-bottom: 5px;
+}
+
+aside
+{
+	width: 14.5%;
+	background-color: lightblue;
+}
+
+aside:nth-child(1)
+{
+	margin-left: 0;
+	margin-right: 0.5%;
+}
+
+aside:nth-child(3)
+{
+	margin-left: 0.5%;
+	margin-right: 0;
+}
+
+main
+{
+	width: 70%;
+	background-color: lightgrey;
+}
+
+
+footer
+{
+	margin-top: 5px;
+	width: 100%;
+	background-color: lightgreen;
+}
+
+.flash
+{
+	background-color: red;
+}
+
+.navbar-right
+{
+	margin-left: auto;
+	margin-right: 10px;
+}
+
+ul.category_rec
+{
+	margin-left: -15px;
+
+	color:orange;
+}
+
+fieldset.getCategory
+{
+	border: solid;
+	border-width: 1px;	
+}
+
+legend
+{
+	width: auto;
+	margin: auto;
+	font-size: 20px;
+}

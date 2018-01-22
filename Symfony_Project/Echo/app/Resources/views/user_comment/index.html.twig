@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>User_comments list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Comment</th>
+                <th>Rate</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user_Comment in user_Comments %}
+            <tr>
+                <td><a href="{{ path('user_comment_show', { 'id': user_Comment.id }) }}">{{ user_Comment.id }}</a></td>
+                <td>{{ user_Comment.comment }}</td>
+                <td>{{ user_Comment.rate }}</td>
+                <td>{% if user_Comment.created %}{{ user_Comment.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if user_Comment.updated %}{{ user_Comment.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_comment_show', { 'id': user_Comment.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_comment_edit', { 'id': user_Comment.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_comment_new') }}">Create a new user_Comment</a>
+        </li>
+    </ul>
+{% endblock %}

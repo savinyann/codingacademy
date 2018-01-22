@@ -1,0 +1,9 @@
+Installed :
+	FOSUserBundle : required
+	StofDoctrineExtensionsBundle : too usefull to not be installed
+	EasyAdmin : Managing Databases Data
+	VichUploaderBundle : Upload a file
+
+
+May be installed :
+	Ratchet : PHP real time

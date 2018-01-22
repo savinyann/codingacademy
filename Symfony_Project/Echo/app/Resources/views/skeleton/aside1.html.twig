@@ -1,0 +1,8 @@
+{% if is_granted("ROLE_USER") %}
+Hello !
+{% endif %}
+
+<fieldset class="getCategory">
+	<legend>  Categories  </legend>
+	{{ render(controller('AppBundle:Aside:getCategory')) }}
+</fieldset>

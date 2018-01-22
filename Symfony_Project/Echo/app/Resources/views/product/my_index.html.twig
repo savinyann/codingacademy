@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Products list</h1>
+
+    <h3>Products ready to bidding</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Startingprice</th>
+                <th>Minbid</th>
+                <th>Autobid</th>
+                <th>Visitedby</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        {% if "now"|date('Y-m-d H:i:s') < product.started|date('Y-m-d H:i:s') %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.startingPrice }}</td>
+                <td>{{ product.minBid }}</td>
+                <td>{% if product.autobid %}{{ product.autobid|join(', ') }}{% endif %}</td>
+                <td>{% if product.visitedBy %}{{ product.visitedBy|join(', ') }}{% endif %}</td>
+                <td>{% if product.created %}{{ product.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product.updated %}{{ product.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Products in bidding process</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Startingprice</th>
+                <th>Minbid</th>
+                <th>Autobid</th>
+                <th>Visitedby</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        {% if "now"|date('Y-m-d H:i:s') < product.ended|date('Y-m-d H:i:s') and "now"|date('Y-m-d H:i:s') > product.started|date('Y-m-d H:i:s') %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.startingPrice }}</td>
+                <td>{{ product.minBid }}</td>
+                <td>{% if product.autobid %}{{ product.autobid|join(', ') }}{% endif %}</td>
+                <td>{% if product.visitedBy %}{{ product.visitedBy|join(', ') }}{% endif %}</td>
+                <td>{% if product.created %}{{ product.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product.updated %}{{ product.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Products sold</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Startingprice</th>
+                <th>Minbid</th>
+                <th>Autobid</th>
+                <th>Visitedby</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        {% if "now"|date('Y-m-d H:i:s') > product.ended|date('Y-m-d H:i:s') %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.startingPrice }}</td>
+                <td>{{ product.minBid }}</td>
+                <td>{% if product.autobid %}{{ product.autobid|join(', ') }}{% endif %}</td>
+                <td>{% if product.visitedBy %}{{ product.visitedBy|join(', ') }}{% endif %}</td>
+                <td>{% if product.created %}{{ product.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if product.updated %}{{ product.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}">Create a new product</a>
+        </li>
+    </ul>
+{% endblock %}

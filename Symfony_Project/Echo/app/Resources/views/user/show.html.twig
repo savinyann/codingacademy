@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>User</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Postaladress</th>
+                <td>{{ user.postalAdress }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if user.updated %}{{ user.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('profile_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+        {% if user.products|length() != 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in user.products %}
+                    <tr>
+                        <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{product.title}}</a></td>
+                        <td>
+                            {% if product.comments|length != 0 %}
+                                {% set rate_av = 0 %}
+                                {% for comment in product.comments %}
+                                    {% set rate_av = rate_av + comment.rate %}
+                                {% endfor %}
+                                {% set rate_av = rate_av / product.comments|length %}
+                                    {{ rate_av }}
+                                {% else %}
+                                    N/A
+                            {% endif %}
+                        </td>
+                        <td>{{product.updated|date('Y-m-d H:i:s')}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    
+        {% if user.comments|length() != 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Comment</th>
+                    <th>Author</th>
+                    <th>Rate</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in user.comments %}
+                    <tr>
+                        <td>{{comment.comment}}</td>
+                        <td>{{comment.author.username}}</td>
+                        <td>{{comment.rate}}</td>
+                        <td>{{comment.updated|date('Y-m-d H:i:s')}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    
+    {% if user != app.user %}
+        <a href="{{ path('user_comment_new', { 'userid': user.id }) }}">New Comment</a>
+    {% endif %}
+
+{% endblock %}

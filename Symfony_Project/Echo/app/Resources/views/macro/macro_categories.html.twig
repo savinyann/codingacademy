@@ -1,0 +1,56 @@
+{% macro catcade(categories, rec = 0) %}
+
+	{% for category in categories %}
+
+		{% if category.parent and rec == 0 %}
+		{% else %}
+
+			<ul class="category_rec"><li>
+				<a href="{{ path('category_show', {'id' : category.id}) }}">{{ category.name }}</a>
+					{{ _self.catcade(category.children, 1) }}
+			</li></ul>
+		{% endif %}
+	{% endfor %}
+
+{% endmacro %}
+
+
+
+{% macro productcatcade(category) %}
+	<h3>{{ category}}</h3>
+    {% if category.products|length() != 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in category.products %}
+                    <tr>
+                        <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{product.title}}</a></td>
+                        <td>
+                            {% if product.comments|length != 0 %}
+                                {% set rate_av = 0 %}
+                                {% for comment in product.comments %}
+                                    {% set rate_av = rate_av + comment.rate %}
+                                {% endfor %}
+                                {% set rate_av = rate_av / product.comments|length %}
+                                    {{ rate_av }}
+                                {% else %}
+                                    N/A
+                            {% endif %}
+                        </td>
+                        <td>{{product.updated|date('Y-m-d H:i:s')}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+	<ul>{% for child in category.children %}
+		<li>{{ _self.productcatcade(child) }}</li>
+	{% endfor %}</ul>
+{% endmacro %}

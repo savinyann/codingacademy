@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1>Product_comment</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product_Comment.id }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ product_Comment.comment }}</td>
+            </tr>
+            <tr>
+                <th>Rate</th>
+                <td>{{ product_Comment.rate }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if product_Comment.created %}{{ product_Comment.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if product_Comment.updated %}{{ product_Comment.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_comment_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('product_comment_edit', { 'id': product_Comment.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

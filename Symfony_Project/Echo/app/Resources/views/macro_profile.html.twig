@@ -1,0 +1,25 @@
+{% macro visitProduct(products) %}
+	{% set totalVisit = 0 %}
+	{% for product in products %}
+		{% set totalVisit = totalVisit + product.visitedBy|length() %}
+	{% endfor %}
+	{% set totalVisit = totalVisit / products|length() %}
+	{{ totalVisit }}
+{% endmacro %}
+
+
+{% macro visitCat (products) %}
+	{% set categories = [] %}
+	{% for product in products %}
+		{% set categories = categories|merge([product.category.name]) %}
+	{% endfor %}
+
+	{% set totalVisit = 0 %}
+	{% for product in products %}
+		{% set totalVisit = totalVisit + product.visitedBy|length() %}
+	{% endfor %}
+	{% set totalVisit = totalVisit / categories|length() %}
+
+	{{totalVisit}}
+
+{% endmacro %}

@@ -1,0 +1,51 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="{{ path('homepage') }}">Echo</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav">
+        {% if is_granted('ROLE_USER') %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ path('fos_user_profile_show') }}">View Me <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ path('fos_user_profile_edit') }}">Edit Me <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ path('fos_user_profile_edit') }}">Change Password<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ path('my_product_index') }}">My Product<span class="sr-only">(current)</span></a>
+          </li>
+
+        {% endif %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('profile_index') }}">View Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('product_index') }}">View Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('category_index') }}">View Categories</a>
+      </li>
+    </ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+        {% if is_granted('ROLE_USER') %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Logout<span class="sr-only">(current)</span></a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ path('fos_user_security_login') }}">Login<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Register<span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
